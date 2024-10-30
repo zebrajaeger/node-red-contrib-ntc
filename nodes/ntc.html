@@ -1,0 +1,52 @@
+<script type="text/javascript">
+    RED.nodes.registerType('NTC', {
+        category: 'function',
+        color: '#ffffff',
+        defaults: {
+            name: { value: "NTC" },
+            adcMaxValue: { value: "1023", required: true },
+            resistor: { value: "100000", required: true },
+            ntcValue: { value: "100000", required: true },
+            ntcTemperature: { value: "25", required: true },
+            ntcB: { value: "3950", required: true }
+        },
+        inputs: 1,
+        outputs: 1,
+        outputLabels: ["Temperature"],
+        icon: 'ntc130x130.png',
+        label: function () {
+            return this.name || "NTC";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="NTC">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name of Node">
+    </div>
+    <div class="form-row">
+        <label for="node-input-adcMaxValue"><i class="fa fa-signal"></i> ADC maximum Value</label>
+        <input type="text" id="node-input-adcMaxValue" placeholder="1023 for 10 Bit resolution">
+    </div>
+    <div class="form-row">
+        <label for="node-input-resistor"><i class="fa wand-magic"></i> Resistor</label>
+        <input type="text" id="node-input-resistor" placeholder="100000 for 100kOhm">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntcValue"><i class="fa fa-thermometer-half"></i> NTC resistance</label>
+        <input type="text" id="node-input-ntcValue" placeholder="100000 for 100kOhm">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntcTemperature"><i class="fa fa-thermometer-half"></i> NTC temperature for resistance above</label>
+        <input type="text" id="node-input-ntcTemperature" placeholder="25 for 25°C">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ntcB"><i class="fa chart-line"></i> NTC B value</label>
+        <input type="text" id="node-input-ntcB" placeholder="i.E. 3950">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Shelly_3EM">
+    <p>Coverts a (ADC) value to a temperature in Celsius</p>
+</script>
